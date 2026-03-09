@@ -1,0 +1,208 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface2: #263147;
+  --border: rgba(148,163,184,0.15);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #facc15;
+  --accent2: #38bdf8;
+  --radius: 10px;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 50%, #1a1a2e 100%);
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 2px solid var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: "⚡";
+  position: absolute;
+  font-size: 8rem;
+  opacity: .04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(250,204,21,.4);
+  letter-spacing: .05em;
+}
+header .sub {
+  color: var(--accent2);
+  font-size: .9rem;
+  margin-top: .4rem;
+  letter-spacing: .1em;
+}
+
+.controls {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#search {
+  width: 100%;
+  padding: .9rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+#search:focus {
+  border-color: var(--accent2);
+  box-shadow: 0 0 0 3px rgba(56,189,248,.15);
+}
+#search::placeholder { color: var(--muted); }
+
+.filters, .sorts {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.sorts span {
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.filter-btn, .sort-btn {
+  padding: .45rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: .85rem;
+  font-family: inherit;
+  transition: all .15s;
+}
+.filter-btn:hover, .sort-btn:hover { border-color: var(--accent2); color: var(--text); }
+.filter-btn.active { background: var(--accent); border-color: var(--accent); color: #0f172a; font-weight: 700; }
+.sort-btn.active  { background: var(--accent2); border-color: var(--accent2); color: #0f172a; font-weight: 700; }
+
+.result-count {
+  max-width: 1100px;
+  margin: 0 auto .5rem;
+  padding: 0 1.5rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.card-grid {
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+  cursor: default;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  border-color: rgba(148,163,184,.3);
+}
+
+.card-header {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: .8rem;
+}
+
+.pos-badge {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: 4px;
+  font-size: .75rem;
+  font-weight: 700;
+  color: #fff;
+}
+.series-badge {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: 4px;
+  font-size: .75rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.card-name {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .2rem;
+}
+.number { color: var(--accent); font-size: .8rem; font-weight: 700; }
+.name   { font-size: 1.05rem; font-weight: 700; }
+
+.card-kana  { font-size: .75rem; color: var(--muted); margin-bottom: .6rem; }
+.card-team  { font-size: .8rem; color: var(--accent2); margin-bottom: .3rem; }
+.card-element { font-size: .8rem; color: var(--muted); margin-bottom: .8rem; }
+
+.card-hissatsu { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; }
+.hissatsu-label {
+  font-size: .7rem;
+  color: var(--muted);
+  margin-right: .2rem;
+}
+.hissatsu-tag {
+  display: inline-block;
+  padding: .15rem .55rem;
+  background: rgba(250,204,21,.08);
+  border: 1px solid rgba(250,204,21,.2);
+  border-radius: 4px;
+  font-size: .7rem;
+  color: var(--accent);
+}
+
+.no-result {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: .8rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  header h1 { font-size: 1.8rem; }
+  .card-grid { grid-template-columns: 1fr; }
+}
