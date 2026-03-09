@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イナグル — イナズマイレブン キャラクター検索</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>⚡ イナグル</h1>
+  <p class="sub">イナズマイレブン キャラクター検索・ソート</p>
+</header>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="名前・チームで検索..." autocomplete="off">
+
+  <div class="filters">
+    <button class="filter-btn active" data-pos="all">全員</button>
+    <button class="filter-btn" data-pos="GK">GK</button>
+    <button class="filter-btn" data-pos="DF">DF</button>
+    <button class="filter-btn" data-pos="MF">MF</button>
+    <button class="filter-btn" data-pos="FW">FW</button>
+  </div>
+
+  <div class="sorts">
+    <span>並び替え：</span>
+    <button class="sort-btn active" data-sort="id">登場順</button>
+    <button class="sort-btn" data-sort="name">名前</button>
+    <button class="sort-btn" data-sort="team">チーム</button>
+  </div>
+</div>
+
+<div id="result-count" class="result-count"></div>
+
+<div id="card-grid" class="card-grid"></div>
+
+<div id="no-result" class="no-result" style="display:none">
+  <p>😢 キャラクターが見つかりませんでした</p>
+</div>
+
+<footer>⚡ イナグル — イナズマイレブン非公式データベース</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
