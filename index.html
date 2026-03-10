@@ -13,21 +13,62 @@
 </header>
 
 <div class="controls">
-  <input type="text" id="search" placeholder="名前・チームで検索..." autocomplete="off">
-
-  <div class="filters">
-    <button class="filter-btn active" data-pos="all">全員</button>
-    <button class="filter-btn" data-pos="GK">GK</button>
-    <button class="filter-btn" data-pos="DF">DF</button>
-    <button class="filter-btn" data-pos="MF">MF</button>
-    <button class="filter-btn" data-pos="FW">FW</button>
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="名前・チーム・必殺技で検索..." autocomplete="off">
+    <button id="search-clear" class="search-clear" style="display:none" title="クリア">&times;</button>
   </div>
 
-  <div class="sorts">
-    <span>並び替え：</span>
-    <button class="sort-btn active" data-sort="id">登場順</button>
-    <button class="sort-btn" data-sort="name">名前</button>
-    <button class="sort-btn" data-sort="team">チーム</button>
+  <div class="filter-group">
+    <span class="filter-label">ポジション</span>
+    <div class="filters">
+      <button class="filter-btn active" data-pos="all">全員</button>
+      <button class="filter-btn" data-pos="GK">GK</button>
+      <button class="filter-btn" data-pos="DF">DF</button>
+      <button class="filter-btn" data-pos="MF">MF</button>
+      <button class="filter-btn" data-pos="FW">FW</button>
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <span class="filter-label">属性</span>
+    <div class="filters" id="element-filters">
+      <button class="element-btn active" data-el="all">全属性</button>
+      <button class="element-btn" data-el="火">🔥 火</button>
+      <button class="element-btn" data-el="土">🌎 土</button>
+      <button class="element-btn" data-el="木">🌿 木</button>
+      <button class="element-btn" data-el="風">💨 風</button>
+      <button class="element-btn" data-el="闇">🌑 闇</button>
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <span class="filter-label">シリーズ</span>
+    <div class="filters" id="series-filters">
+      <button class="series-btn active" data-series="all">全シリーズ</button>
+      <button class="series-btn" data-series="1">イナイレ1</button>
+      <button class="series-btn" data-series="GO">GO</button>
+      <button class="series-btn" data-series="CS">クロノ・ストーン</button>
+      <button class="series-btn" data-series="Galaxy">ギャラクシー</button>
+    </div>
+  </div>
+
+  <div class="sort-group">
+    <span class="filter-label">並び替え</span>
+    <div class="sorts">
+      <button class="sort-btn active" data-sort="id">登場順</button>
+      <button class="sort-btn" data-sort="name">名前</button>
+      <button class="sort-btn" data-sort="team">チーム</button>
+      <button class="sort-btn" data-sort="element">属性</button>
+      <button class="sort-btn" data-sort="number">背番号</button>
+      <button class="sort-btn" data-sort="series">シリーズ</button>
+      <button id="sort-dir" class="sort-dir-btn" title="昇順/降順を切り替え">↑ 昇順</button>
+    </div>
+  </div>
+
+  <div class="active-filters" id="active-filters" style="display:none">
+    <span class="filter-label">絞り込み中：</span>
+    <div id="active-tags"></div>
+    <button id="reset-all" class="reset-btn">リセット</button>
   </div>
 </div>
 
